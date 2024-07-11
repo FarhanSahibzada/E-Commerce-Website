@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commmerce Web</title>
   <!-- vanila css -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="htmlfiles/style.css">
   <!-- tailwnd css -->
-  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="htmlfiles/output.css">
   <!-- animation cdn -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- diausyui cdn -->
@@ -107,7 +107,7 @@
   
   <div  class="searchbar ">
 <ul id="list" class="w-80 bg-base-100" style="cursor: pointer;">
-  <li id="il" onclick="window.location.href = 'all.html'">All Shoes</li>
+  <li id="il" onclick="window.location.href = 'htmlfiles/all.html'">All Shoes</li>
   <li id="il">Men Shoes <span class="badge badge-secondary absolute right-10">Soon</span></li>
   <li id="il">Women Shoes <span class="badge badge-secondary absolute right-10">Soon</span></li>
 </ul>
@@ -481,8 +481,7 @@
       <div tabindex="0" role="button" class="btn m-1 rounded-full px-10 border-solid border-2 border-indigo-400">View
         all products </div>
       <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-        <li><a>Men shoes</a></li>
-        <li><a>Women Shoes</a></li>
+        <li><a onclick="go()">All Shoes</a></li>
       </ul>
     </div>
   </div>
@@ -545,7 +544,7 @@
   );
 </script>
   <!-- external  javascript-->
-  <script src="app.js"></script>
+  <script src="htmlfiles/app.js"></script>
   <!-- daisyui cdn -->
   <script src="https://cdn.tailwindcss.com"></script>
 </body>

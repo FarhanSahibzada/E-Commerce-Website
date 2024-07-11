@@ -157,7 +157,7 @@ function sec() {
 }
 // all shoes location function
 function go() {
-    window.location.href = "all.html";
+    window.location.href = "htmlfiles/all.html";
 }
 
 // serch bar function
