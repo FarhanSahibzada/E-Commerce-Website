@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<ht lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shoes</title>
+    <!-- vanila css -->
+    <link rel="stylesheet" href="style2.css">
+    <!-- tailwnd css -->
+    <link rel="stylesheet" href="output.css">
+    <!-- animation cdn -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- diausyui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+
+  <body>
+    <!-- navber -->
+    <div class="navbar bg-base-100 z-20 han "data-aos="fade-down">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost hh ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a>Home</a></li>
+            <li>
+              <a>About Us</a>
+            </li>
+            <li>
+              <details>
+                <summary>Products</summary>
+                <ul class="p-2">
+                  <li><a>Men Shoes <span class="badge badge-secondary relative right-0">Soon</span></a></li>
+                  <li><a>Women Shoes <span class="badge badge-secondary relative right-0">Soon</span></a></li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl  " style="text-decoration: underline wavy hotpink;">All Shoes</a>
+        <select id="select2" class="lg:ms-20 lg:px-4 lg:py-2 cc" style="border: 1px ridge ;" oninput="chal()">
+          <optgroup label="Select Brand">
+            <option value="Select Brand" selected disabled>Select Brand</option>
+            <option value="Nike">Nike</option>
+            <option value="Adidas">Adidas</option>
+            <option value="Puma">Puma</option>
+            <option value="Reebok">Reebok</option>
+            <option value="New Balance">New Balance</option>
+          </optgroup>
+        </select>
+        <select  id="select1" class="lg:ms-20 lg:px-4 lg:py-2 vv"  style="border: 1px ridge ;" oninput="chal()">
+          <option value="All" selected>All</option>
+          <option value="Men">Men</option>
+          <option value="Women">Women</option>
+        </select>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a class="text-lg" style=" font-weight: 600; " onclick="window.location.href = 'index.html'">Home</a></li>
+          <li>
+            <a href="" style="font-weight: 600;" class="text-lg">About Us</a>
+          </li>
+          <li>
+            <details>
+              <summary class="text-lg"
+                style="font-weight: 600; text-decoration: underline wavy hotpink;  padding-bottom: 2px;">Products
+              </summary>
+              <ul class="p-2">
+                <li><a>Men Shoes <span class="badge badge-secondary relative right-0">Soon</span></a></li>
+                <li><a>Women Shoes <span class="badge badge-secondary relative right-0">Soon</span></a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <label class="input input-primary mobile:hidden flex items-center  gap-5 navbar-end  me-2 in lab">
+          <input id="input" type="text" class="grow serr me-4" oninput="search()" placeholder="Search your brands" />
+        </label>
+        <div id="shopicon" class="indicator" style="margin-right: 20px;">
+          <span id="shop" class="indicator-item z-1 badge bg-indigo-500 text-white">0</span>
+          <!-- drawer content here -->
+          <div class="drawer drawer-end">
+            <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content">
+              <label for="my-drawer-4" class="drawer-button btn "><i class="fa-solid fa-cart-shopping fa-bounce"
+                  style="color: #B197FC;"></i></label>
+            </div>
+            <div class="drawer-side">
+              <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+              <ul id="ul" class="z-10 menu bg-base-200 text-base-content min-h-full w-7/12 sm:w-8/12 ll p-4">
+                <!-- Sidebar content here -->
+                <button id="cross" class="z-20 btn btn-circle absolute right-14 top-0 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <li class="lg:text-lg"><a>My Cart<span id="mm">0</span></a></li>
+                <hr>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="searchbar">
+      <ul id="list" class="w-64 bg-base-100" style="cursor: pointer;">
+        <li id="n" class="il">Nike</li>
+        <li id="N" class="il">New Balance </li>
+        <li id="pa" class="il">Puma Shoes </li>
+        <li id="r" class="il">Reebok </li>
+        <li id="a" class="il">Adidas</li>
+      </ul>
+    </div>
+
+
+    <!-- body -->
+
+    <div class="container5  overflow-hidden">
+      <div class="grid-item">
+        <div class="card glass w-80">
+          <figure class="relative">
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/32090ca9-d8ef-4943-aa41-4f23dc0777af/air-jordan-4-retro-oxidized-green-mens-shoes-PNtDJp.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Air Jordan low
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="price absolute right-1 pb-14 font-sans">$254.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy12" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e5b59e17-f478-498a-84ac-765ca94d5a49/air-jordan-1-low-mens-shoes-0LXhbn.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Air Jordan low
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="price absolute right-1 pb-14 font-sans">$114.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy6" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card bb glass w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img class="w-full"
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d970ad2c-272d-4ceb-a1fc-4f499e81a0c7/air-jordan-1-low-g-golf-shoes-ZR2b5R.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Air Jordan G
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 font-sans">$149.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy7" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card bb glass w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2e407c31-e9f7-4e93-a831-7913d63596e4/alphafly-3-mens-road-racing-shoes-5gZBgL.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Nike Alphafly
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 font-sans">$284.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy8" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- display start -->
+      <div class="grid-item">
+        <div class="card bb glass w-80">
+          <figure>
+            <img
+              src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f5da422a00254891b574651b7f964fe2_9366/Duramo_Speed_Shoes_Black_IE4036_01_standard.jpg"
+              alt="car!" style="transform: rotateY(-180deg);" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Duramo Speed Shoes
+              <p class="absolute right-1 pb-14 font-sans">$89.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Adidas</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy13" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img src="https://nb.scene7.com/is/image/NB/u9060bpo_nb_03_i?$pdpflexf2$&qlt=80&fmt=webp&wid=440&hei=440"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">9060
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$149.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">New Balance</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy14" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card bb glass w-80">
+          <figure>
+            <img
+              src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_350,h_350/global/308043/02/sv01/fnd/PNA/fmt/png/BMW-M-Motorsport-SPEEDFUSION-2.0-Men's-Sneakers"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">BMW Fusion 2.O
+              <p class="absolute right-1 pb-14 font-sans">$99.99</p>
+            </h2>
+            <div class="card-actions justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Puma</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy11" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img src="https://nb.scene7.com/is/image/NB/bb480lta_nb_03_i?$pdpflexf2$&qlt=80&fmt=webp&wid=440&hei=440"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Unisex
+              Lifestyle
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">
+                $89.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">New Balance</div>
+                <div id="cat" class="badge badge-outline">MEN</div>
+              </div>
+              <button id="buy15" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- women card start  -->
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7c42ef8a-21b9-46f4-941c-b2e3b68a8349/air-jordan-1-low-se-womens-shoes-6TzcTL.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;"> Air Jordan 1 Low Se
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$124.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy16" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img src="https://nb.scene7.com/is/image/NB/wxm100w2_nb_03_i?$pdpflexf2$&qlt=80&fmt=webp&wid=440&hei=440"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">FuelCell Trainer v2
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$109.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">New Balance</div>
+                <div id="cat"class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy17" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b0df1804-be60-46e0-ac96-2abb4535aa9e/air-jordan-1-low-og-black-gorge-green-womens-shoes-cdgt2t.png"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;"> Air Jordan 1 Low OG
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$139.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Nike</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy18" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <span class="absolute top-8 left-8 bg-red-500 font-semibold text-white px-4 py-2 qq text-sm">HOT</span>
+            <img
+              src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_350,h_350/global/369155/04/sv01/fnd/PNA/fmt/png/Cali-Women's-Sneakers"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Call Women Sneaker
+              <div class="badge badge-secondary absolute right-5">HOT</div>
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$79.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Puma</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy19" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- display start -->
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img
+              src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_350,h_350/global/399028/01/sv01/fnd/PNA/fmt/png/Easy-Rider-Vintage-Sneakers"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Easy Rider Vintage
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$89.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Puma</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy20" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img
+              src="https://reebok.bynder.com/transform/89d3ec5c-fe5a-4dbb-8f4f-c6d1c2b4d76f/100208143_SLC_eCom-tif?io=transform:fit,width:400&quality=100"
+              alt="car!" style="transform: rotateY(-180deg);" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Club C Revenge
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$84.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Reebok</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy21" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img src="https://nb.scene7.com/is/image/NB/wxmtrlm2_nb_03_i?$pdpflexf2$&qlt=80&fmt=webp&wid=440&hei=440"
+              alt="car!" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;"> Minimus TR v2
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$119.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">New Balance</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy22" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="card glass bb w-80">
+          <figure>
+            <img
+              src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cd94de8858c04741853150b94e864333_9366/Kaptir_3.0_Shoes_Black_JI1246_01_standard.jpg"
+              alt="car!" style="transform: rotateY(-180deg);" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title font-sans text-base"
+              style="font-family: Arial, Helvetica, sans-serif; font-size: 18.5px;">Kaptir 3.0 Shoes
+              <p class="absolute right-1 pb-14 " style="font-family: Arial, Helvetica, sans-serif;">$89.99</p>
+            </h2>
+            <div class="card-actions mt-4 justify-end">
+              <div class="card-actions  justify-end">
+                <div id="br" class="badge badge-outline">Adidas</div>
+                <div id="cat" class="badge badge-outline">WOMEN</div>
+              </div>
+              <button id="buy23" class="btn w-full">
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+    
+        duration: 1500
+      }
+      );
+    </script>
+
+
+    <!-- external  javascript-->
+    <script src="app2.js"></script>
+    <!-- daisyui cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+
+  </html>
